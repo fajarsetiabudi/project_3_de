@@ -74,7 +74,7 @@ df_filtered = df[(df['created_at'] >= '2018-02-01') & (df['created_at'] < '2018-
 engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
 
 #insert to postgres
-df_filtered.to_sql(table_name, engine, if_exists='append', index=False) 
+df_filtered.to_sql(table_name, engine, if_exists='replace', index=False) 
 
 print(f'Total inserted rows: {len(df_filtered)}') #melihat jumlah data masuk menggunakan fungsi len
 print(f'Inital created_at: {df_filtered.created_at.min()}') #tanggal created terkecil
